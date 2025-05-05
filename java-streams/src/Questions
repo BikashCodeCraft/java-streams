@@ -1,0 +1,111 @@
+Question 1 : Use the “Stream.map() function to transform a list of objects into a new list of a different type and perform multiple transformations in a pipeline.
+Requirements:
+•	Define a “Person” class with fields “name” and “age”.
+•	Create a list of “Person” objects.
+•	Convert the list of “Person” objects into a list of “String” objects containing only the names of people who are older than 30.
+•	Chain multiple “map()” operations to:
+•	First, extract the names of people who are over 30.
+•	Then, transform the names to uppercase.
+•	Use “Collectors.toList()” to collect the final results into a list.
+Ensure that the final list of names contains unique names using “Collectors.toSet()”.
+
+Question 2 : Implement a system that filters and groups data based on multiple conditions using “Stream.filter()” and “Stream.collect()”.
+Requirements:
+•	Define a “Product” class with fields such as “id”, “name”, “category”, and “price”.
+•	Create a list of products.
+•	Filter the products to:
+•	Only include products with a price greater than a specific value.
+•	Only include products from certain categories.
+•	Group the filtered products by category using “Collectors.groupingBy()”.
+•	Aggregate the results within each category by computing the total price of all products in that category using “Collectors.summingDouble()”.
+Sort the products within each category by price in descending order.
+
+Question 3 : Flatten a nested list of objects using “Stream.flatMap()”.
+Requirements:
+•	Define a “Student” class with fields “name” and a list of “Subject” objects.
+•	Define a “Subject” class with a “name” field.
+•	Create a list of “Student” objects, each having a list of subjects.
+•	Use “Stream.flatMap()” to flatten the list of subjects from all students.
+•	Collect the flattened subjects into a set (to ensure uniqueness).
+Create a map of students to the number of subjects they are enrolled in.
+
+Question 4 : Use “Stream.reduce()” to compute a final result from a collection of data.
+Requirements:
+•	Define a “Transaction” class with fields “id”, “amount”, and “type” (deposit/withdrawal).
+•	Create a list of transactions.
+•	Use “Stream.reduce()” to calculate the total balance, assuming that deposits increase the balance and withdrawals decrease it.
+•	Also, calculate the total number of transactions (size of the list).
+Ensure that the result handles empty lists gracefully.
+
+Question 5 : Implement a system that calculates statistics on a nested list using “Stream.flatMap()” and aggregation.
+Requirements:
+•	Define a “Department” class with fields “name” and a list of “Employee” objects.
+•	Define an “Employee” class with fields “name” and “salary”.
+•	Create a list of departments, each having a list of employees.
+•	Use “Stream.flatMap()” to flatten the employee list from all departments.
+•	Compute the total salary of all employees using “Stream.reduce()” or “Collectors.summingDouble()”.
+•	Group the employees by salary range (e.g., below 50k, 50k-100k, above 100k).
+Sort the employees within each salary range by their name in alphabetical order.
+
+Question 6 : Sort a collection of complex objects based on multiple attributes using “Stream.sorted()” and “Comparator”.
+Requirements:
+•	Define a “Product” class with fields “id”, “name”, “category”, and “price”.
+•	Create a list of “Product” objects.
+•	Sort the list of products first by category and then by price in descending order using “Stream.sorted()”.
+•	Use “Comparator.thenComparing()” to specify the secondary sorting criterion.
+•	Ensure the sorted products are collected into a list.
+Implement a custom comparator for case-insensitive string sorting for the product names.
+
+Question 7 : Use “Stream.peek()” for debugging and tracing the elements as they flow through the stream.
+Requirements:
+•	Define a “Product” class with “id”, “name”, and “price”.
+•	Create a list of products.
+•	Use “Stream.peek()” to print out the product name at various stages of a stream pipeline (e.g., after filtering, after mapping).
+•	Perform a sequence of operations on the stream, such as filtering products with prices over 100 and then transforming them into a list of uppercase names.
+•	Print the intermediate results at each stage using “peek()”.
+Use “peek()” to inspect the elements before and after sorting, filtering, and mapping operations.
+
+Question 8 : Use advanced matching techniques to validate data using “Stream.allMatch()”, “Stream.anyMatch()”, and “Stream.noneMatch()”.
+Requirements:
+•	Define an “Order” class with fields “orderId”, “status”, and “amount”.
+•	Create a list of orders.
+•	Use “Stream.allMatch()” to check if all orders are above a certain amount.
+•	Use “Stream.anyMatch()” to check if any order has a status of "shipped".
+•	Use “Stream.noneMatch()” to check if no order has a status of "cancelled".
+Use “Stream.findFirst()” or “Stream.findAny()” to retrieve an order with a specific “orderId” and print it.
+
+Qustion 9 : Group and partition data using “Collectors.groupingBy()” and “Collectors.partitioningBy()”.
+Requirements:
+•	Define an “Employee” class with fields “name”, “age”, and “salary”.
+•	Create a list of “Employee” objects.
+•	Use “Collectors.groupingBy()” to group employees by age range (e.g., below 30, 30-40, above 40).
+•	Use “Collectors.partitioningBy()” to partition employees into two groups based on whether their salary is greater than a certain threshold.
+For each partition or group, calculate the average salary using “Collectors.averagingDouble()”.
+
+Question 10 : Concatenate string values and group them using “Collectors.joining()” and “Collectors.groupingBy()”.
+Requirements:
+•	Define a “Book” class with fields “title”, “author”, and “genre”.
+•	Create a list of books.
+•	Use “Collectors.groupingBy()” to group the books by their genre.
+•	For each genre, concatenate the titles of all books in that genre into a single string using “Collectors.joining()”.
+•	Ensure the result is collected into a map where the genre is the key and the concatenated book titles are the value.
+Sort the genres alphabetically before printing the results.
+
+Question 11 : Given a list of ProductReview objects, each containing a product name, review score, and review date, you need to.
+•	Get all reviews with a score above 4.
+•	Calculate the average review score for a specific product.
+•	Find the latest review for each product. (Use Collectors.maxBy())
+
+Question 12 : Given a list of objects, each containing the employee's name, department, and salary.
+•	Filter employees whose salary is greater than $50,000.
+•	Group employees by department.
+•	Find the average salary in each department. (Use Collectors.averagingDouble())
+
+Question 13 : Given a list of Order objects, each of which contains an order id and list of OrderItem object. Each OrderItem contains a product name and quantity.
+•	Map the orders to a list of OrderItem objects. (Wanted Stream<OrderItem> not Stream<List<OrderItem>>)
+•	Flatten all OrderItem objects into a single list and then map to a list of product names.
+
+Question 14 : Given a list of CartItem objects, each containing a product name, quantity, and price.
+•	Calculate the total value of all items in the cart. (Use mapToDouble())
+•	Find the item with the highest total price (quantity * price). (Use Collectors.comparingDouble())
+•	Filter out items with a quantity of 0 and print the remaining cart.
